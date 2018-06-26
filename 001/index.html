@@ -1,0 +1,38 @@
+<!--
+    Output:
+        alert: app.js init
+        alert: app.site.js init
+        Log-1: hello
+        Log-2: world!
+        Log-3: app function from app-site
+        site-info: app-site function from app
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Module Pattern</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+    <script src="app.site.js"></script>
+    <script src="notify.js"></script>
+</head>
+
+<body>
+
+    <script>
+        app.init(); // alert: app.js init
+        app.site.init(); // alert: app.site.js init
+        $(document).ready(function(){
+            app.customLog('hello');  // Log-1: hello
+            app.customLog('world!'); // Log-2: world!
+
+            app.site.callAppFunction('app function from app-site'); // Log-3: app function from app-site
+            app.callAppSiteFunction('app-site function from app');  // site-info: app-site function from app
+        });
+    </script>
+
+</body>
+
+</html>
